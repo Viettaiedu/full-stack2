@@ -1,0 +1,17 @@
+
+.sidedrawer {
+    position: fixed;
+    background-color: aliceblue;
+    width: 60%;
+    height: 100vh;
+    z-index: 100;
+    top:0;
+    left:0;
+    bottom: 0;
+    transform: translateX(-100%);
+    transition:transform 0.4s linear ;
+}
+
+.sidedrawer.show {
+    transform: translateX(0%);
+}
