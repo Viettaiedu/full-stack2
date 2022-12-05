@@ -58,3 +58,9 @@ export const getProductDetailsReducer = (state = {product: {}}, action ) => {
         return state;
     }
 }
+
+export const removeProductDetails = () => (dispatch) => {
+    dispatch({
+        type : actionTypes.GET_PRODUCTS_DETAILS_RESET
+    })
+}
