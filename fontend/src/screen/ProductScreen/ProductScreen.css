@@ -1,0 +1,23 @@
+.productscreen {
+    max-width: 1300px;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+.productscreen__left {
+    width: 40%;
+}
+
+.productscreen__middel {
+    width: 30%;
+}
+
+.productscreen__right {
+    width: 23%;
+}
+
+
+

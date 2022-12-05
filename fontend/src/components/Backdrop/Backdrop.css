@@ -7,3 +7,9 @@
     bottom: 0;
     background: linear-gradient(to top , rgba(0,0,0,0.3) , rgba(0,0,0,0.4) );
 }
+
+@media (min-width:768px) {
+    .backdrop {
+        display: none;
+    }
+}

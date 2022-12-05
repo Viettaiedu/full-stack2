@@ -65,6 +65,7 @@
     transition: color 0.3s ;
     display: none;
     z-index: 999;
+    color:white;
 }
 
 .navbar__menu:hover {

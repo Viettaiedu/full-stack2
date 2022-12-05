@@ -7,7 +7,7 @@ import SideDrawer from './components/SideDrawer';
 import Backdrop from './components/Backdrop';
 
 // Screen
-import Homesreen from  './screen/Homesreen'
+import Homescreen from  './screen/Homescreen'
 import ProductScreen from  './screen/ProductScreen'
 import CartScreen from  './screen/CartScreen'
 import { useState } from 'react';
@@ -17,16 +17,16 @@ function App() {
     <Router>
       <div className="App">
             <Navbar click={() => setSideToggle(!sideToggle)}/>
-            <SideDrawer show={sideToggle}/> 
-            <Backdrop show={sideToggle}/>
+            <SideDrawer show={sideToggle} click={() => setSideToggle(false)}/> 
+            <Backdrop show={sideToggle}  click={() => setSideToggle(false)}/>
             <main>
               <Routes>
-                <Route path="/" element={<Homesreen/>}/>
+                <Route path="/" element={<Homescreen/>}/>
                 <Route path="/product/:id" element={<ProductScreen/>}/>
                 <Route path="/cart" element={<CartScreen/>}/>
               </Routes>
             </main>
-            {/*  Homesreen */}
+            {/*  Homescreen */}
             {/*  ProductScreen */}
             {/*  CartScreen */}
       </div>
