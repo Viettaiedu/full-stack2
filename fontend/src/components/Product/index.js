@@ -16,7 +16,7 @@ function Product({item}) {
         </p>
         <p className='product__price'>$499</p>
 
-        <Link to={`/product/${12121}`} className='product__view'>
+        <Link to={`/products/63889da0e8ef6c01d50d5ee0`} className='product__view'>
                 View
         </Link>
     </div>

@@ -16,7 +16,7 @@ const getProductAll = async (req,res) => {
 // [GET] /api/products/:id
 const getProductById = async (req,res) => {
     try {
-       const product = await Product.findById({});
+       const product = await Product.findById(req.params.id);
        res.json(product)
     }catch(error) {
         console.log("Get product failed");
