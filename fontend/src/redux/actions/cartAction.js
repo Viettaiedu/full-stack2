@@ -15,15 +15,13 @@ export const addToCart = (id,qty) => async(dispath,getState) => {
             qty
         }
     })
-
-    localStorage.setItem("cart" , JSON.stringify(getState.cart));
+    localStorage.setItem("cart",JSON.stringify(getState().cart));
 }
 
 export const removeFromCart = (id) => (dispatch,getState) => {
     dispatch({
         type : actionTypes.REMOVE_FROM_CART,
-        payload : id
+        product : id
     })
-    localStorage.setItem("cart" , JSON.stringify(getState.cart.cartItems));
-
+    localStorage.setItem("cart" , JSON.stringify(getState().cart));
 }

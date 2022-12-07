@@ -5,6 +5,7 @@ const products = require('./data/products');
 connectDB();
 const importDataToMongoDB = async () => {
     try {
+        await Product.deleteMany();
        await Product.insertMany(products);
         console.log("IMPORT DATA TO MONGODB SUCCESSFUL");
         process.exit();

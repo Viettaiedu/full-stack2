@@ -1,30 +1,46 @@
 
 import React from 'react'
-import './ProductScreen.css'
+import { useState , useEffect } from 'react';
+import { useParams , useNavigate } from 'react-router-dom';
+import { useDispatch , useSelector } from 'react-redux';
+import {getProductDetails} from '../../redux/actions/productAction';
+import {addToCart} from '../../redux/actions/cartAction';
+import './ProductScreen.css';
 function ProductScreen() {
-  // name: "PlayStation 5",",
-  // description:
-  //   "",
-  // price: 499,
-  // countInStock: 15,
+  const {id} =  useParams();
+  const navigate = useNavigate();
+  const[qty , setQty] = useState(1);
+  const dispatch =useDispatch();
+  const productDetails = useSelector(state => state.getProductDetails);
+  const {loading , error , product} = productDetails;
+  useEffect(() => {
+    if (product && id !== product._id){
+      dispatch(getProductDetails(id))
+    }
+  },[dispatch,id ])
+  const handleAddCart = () => {
+      dispatch(addToCart(id,qty));
+      navigate('/cart');
+  }
   return (
     <div className='productscreen'>
-        <img className='productscreen__left'  src='https://images.unsplash.com/photo-1606813907291-d86efa9b94db?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80' alt="Produc1"/>
+        <img className='productscreen__left'  src={product.imageUrl} alt={product.name}/>
       <div className='productscreen__middel'>
-            <h3 className='productscreen__name'> PlayStation 5</h3>
-            <p className='productscreen__price'> $499</p>
+            <h3 className='productscreen__name'> Name: {product.name}</h3>
+            <p className='productscreen__price'> Price: {product.price}</p>
             <p className='productscreen__description'>
-            PlayStation 5 (PS5) is a home video game console developed by Sony Interactive Entertainment. Announced in 2019 as the successor to the PlayStation 4, the PS5 was released on November 12, 2020 in Australia, Japan, New Zealand, North America, Singapore, and South Korea, and November 19, 2020 onwards in other major markets except China and India.
+           Description: {product.description}
             </p>
       </div>
       <div className='productscreen__right'>
-      <p className='productscreen__price'> $499</p>
-      <p className='productscreen__status'> In stock</p>
-      <select>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+      <p className='productscreen__price'>Price: {product.price}</p>
+      <p className='productscreen__status'>Status: {product.countInStock > 0 ? "In stock" : "Out of stock"}</p>
+      <select  value={qty} onChange={(e) => setQty(e.target.value)}>
+        {[...Array(product.countInStock).keys()].map(x => (
+          <option key={x++} value={x++} >{x++}</option>
+        )) }
       </select>
+      <button className='productscreen__add' onClick={handleAddCart}>Add to cart</button>
         </div>
     </div>
   )

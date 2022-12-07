@@ -6,7 +6,6 @@ connectDB();
 const app = express();
 
 app.use(express.json());
-
 app.use('/api/products', productRoute);
 
 const PORT = process.env.PORT || 4000;
